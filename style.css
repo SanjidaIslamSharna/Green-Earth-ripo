@@ -134,12 +134,16 @@ nav .btn-plant:hover {
   align-items: center;
   gap: 20px;
   margin: 40px 0;
+  width: 1090px;
+  height: 610px;
+
 }
 
 .about img {
-  flex: 1 1 300px;
+  width: 530px;
+  height: 530px;
   border-radius: 12px;
-  max-width: 100%;
+  object-fit: cover; /* ensures the image fills the box without stretching */
 }
 
 .about-text {
