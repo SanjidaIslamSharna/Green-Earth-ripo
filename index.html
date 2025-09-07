@@ -1,11 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Green Earth</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Plant a Tree</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="assets/js/app.js"></script>
 </head>
-<body>
-    
+<body class="bg-gray-50">
+
+   <!-- Navbar -->
+  <nav class="flex justify-between items-center p-4 bg-green-700 text-white">
+    <div class="font-bold text-xl">Green Earth</div>
+    <ul class="hidden md:flex gap-6">
+      <li><a href="#about" class="hover:underline">About</a></li>
+      <li><a href="#gallery" class="hover:underline">Gallery</a></li>
+      <li><a href="#plant" class="hover:underline">Plant a Tree</a></li>
+    </ul>
+    <button class="bg-yellow-400 text-black px-4 py-2 rounded-lg hover:bg-yellow-300 transition">Plant a Tree</button>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="relative flex flex-col justify-center items-center text-center py-20" style="background-color: #CFF0DC;">
+    <!-- Left Leaf -->
+    <img src="assets/hero-leaf1.png" alt="Leaf Left"
+         class="absolute bottom-0 left-0 w-383 md:w-546" />
+
+    <!-- Right Leaf -->
+    <img src="assets/hero-leaf2.png" alt="Leaf Right"
+         class="absolute bottom-0 right-0 w-383 md:w-546" />
+
+    <!-- Content -->
+    <div class="z-10 px-4" >
+      <h1 class="text-4xl md:text-5xl font-bold text-black mb-4" >
+        Plant a Tree, Grow a Future
+      </h1>
+      <p class="text-gray-700 mb-6 max-w-xl">
+        Join our mission to plant 1 million trees and make the Earth greener for future <br>generations.
+      </p>
+      <button class="bg-yellow-400 text-black px-6 py-2 rounded-lg hover:bg-yellow-300 transition">
+        Get Involved
+      </button>
+    </div>
+  </header>
+
+  <!-- About -->
+  <section id="about" class="max-w-6xl mx-auto p-6 grid md:grid-cols-2 gap-8">
+    <img src="images/about.jpg" alt="About campaign" class="rounded-xl shadow-lg">
+    <div>
+      <h2 class="text-2xl font-bold mb-4">About the Campaign</h2>
+      <p>Our campaign is dedicated to restoring greenery worldwide by planting trees and creating awareness. Together we can reduce carbon footprint and fight climate change.</p>
+    </div>
+  </section>
+
+  <!-- Impact -->
+  <section id="impact" class="bg-green-100 py-12">
+    <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-6 text-center">
+      <div class="bg-white p-6 rounded-xl shadow">
+        <h3 class="text-2xl font-bold">10K+</h3>
+        <p>Trees Planted</p>
+      </div>
+      <div class="bg-white p-6 rounded-xl shadow">
+        <h3 class="text-2xl font-bold">5K+</h3>
+        <p>Volunteers</p>
+      </div>
+      <div class="bg-white p-6 rounded-xl shadow">
+        <h3 class="text-2xl font-bold">50+</h3>
+        <p>Communities Impacted</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Categories + Plants -->
+  <section id="categories" class="max-w-6xl mx-auto p-6">
+    <h2 class="text-2xl font-bold mb-4">Choose a Category</h2>
+    <div id="category-buttons" class="flex gap-4 overflow-x-auto"></div>
+
+    <!-- Loading Spinner -->
+    <div id="spinner" class="hidden text-center my-8">
+      <div class="animate-spin h-8 w-8 border-4 border-green-600 border-t-transparent rounded-full mx-auto"></div>
+    </div>
+
+    <!-- Cards -->
+    <div id="plants-container" class="grid md:grid-cols-3 gap-6 mt-6"></div>
+  </section>
+
+  <!-- Cart -->
+  <section class="max-w-6xl mx-auto p-6">
+    <h2 class="text-2xl font-bold mb-4">Your Cart</h2>
+    <ul id="cart-list" class="space-y-2"></ul>
+    <p class="font-bold mt-4">Total: $<span id="total-price">0</span></p>
+  </section>
+
+  <!-- Plant a Tree Today -->
+  <section class="bg-green-50 py-12">
+    <div class="max-w-lg mx-auto p-6 bg-white rounded-xl shadow">
+      <h2 class="text-2xl font-bold mb-4 text-center">Plant a Tree Today</h2>
+      <form class="space-y-4">
+        <input type="text" placeholder="Your Name" class="w-full p-2 border rounded">
+        <input type="email" placeholder="Your Email" class="w-full p-2 border rounded">
+        <input type="number" placeholder="Number of Trees" class="w-full p-2 border rounded">
+        <button type="submit" class="w-full bg-green-600 text-white py-2 rounded">Submit</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-green-700 text-white text-center py-4">
+    © 2025 Plant a Tree Campaign
+  </footer>
+<!-- Modal -->
+  <div id="modal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center">
+    <div class="bg-white p-6 rounded-xl max-w-lg w-full relative">
+      <button id="close-modal" class="absolute top-2 right-2">❌</button>
+      <div id="modal-content"></div>
+    </div>
+  </div>
+
 </body>
 </html>
