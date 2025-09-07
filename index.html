@@ -4,35 +4,39 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Plant a Tree</title>
-  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="./style.css" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script defer src="assets/js/app.js"></script>
 </head>
 <body class="bg-gray-50">
 
    <!-- Navbar -->
-  <nav class="flex justify-between items-center p-4 bg-green-700 text-white">
-    <div class="font-bold text-xl">Green Earth</div>
-    <ul class="hidden md:flex gap-6">
-      <li><a href="#about" class="hover:underline">About</a></li>
-      <li><a href="#gallery" class="hover:underline">Gallery</a></li>
-      <li><a href="#plant" class="hover:underline " >Plant a Tree</a></li>
-    </ul>
-    <button class="bg-yellow-400 text-black px-4 py-2 rounded-lg hover:bg-yellow-300 transition" style="color: rgb(2, 162, 2);">Plant a Tree</button>
+  <nav class="w-full bg-green-700 text-white">
+    <div class="px-4 py-2 md:px-[135px] md:py-[24px] mx-auto flex justify-between items-center">
+      <div class="font-bold text-xl">Green Earth</div>
+      <ul class="hidden md:flex gap-6">
+        <li><a href="#about" class="hover:underline">About</a></li>
+        <li><a href="#gallery" class="hover:underline">Gallery</a></li>
+        <li><a href="#plant" class="hover:underline " >Plant a Tree</a></li>
+      </ul>
+      <button class="bg-yellow-400 text-black px-4 py-2 rounded-lg hover:bg-yellow-300 transition" style="color: rgb(2, 162, 2);">Plant a Tree</button>
+    </div>
   </nav>
 
+  
+
   <!-- Hero Section -->
-  <header class="relative flex flex-col justify-center items-center text-center py-20" style="background-color: #CFF0DC;">
+  <header class="relative flex flex-col justify-center items-center text-center w-screen h-[383px]" style="background-color: #CFF0DC;">
     <!-- Left Leaf -->
     <img src="assets/hero-leaf1.png" alt="Leaf Left"
-         class="absolute bottom-0 left-0 w-383 md:w-546" />
+         class="absolute bottom-0 left-0 w-1/3 md:w-546" />
 
     <!-- Right Leaf -->
     <img src="assets/hero-leaf2.png" alt="Leaf Right"
-         class="absolute bottom-0 right-0 w-383 md:w-546" />
+         class="absolute bottom-0 right-0 w-1/3 md:w-546" />
 
     <!-- Content -->
-    <div class="z-10 px-4" >
+    <div class="w-2/3 md:w-[627px]" >
       <h1 class="text-4xl md:text-5xl font-bold text-black mb-4" >
         Plant a Tree, Grow a Future
       </h1>
@@ -46,28 +50,25 @@
   </header>
 
 
-  
-  <!-- Categories + Plants -->
-  <section id="categories" class="max-w-6xl mx-auto p-6">
-    <h2 class="text-2xl font-bold mb-4">Choose a Category</h2>
-    <div id="category-buttons" class="flex gap-4 overflow-x-auto"></div>
-
-    <!-- Loading Spinner -->
-    <div id="spinner" class="hidden text-center my-8">
-      <div class="animate-spin h-8 w-8 border-4 border-green-600 border-t-transparent rounded-full mx-auto"></div>
+  <section class="w-screen py-5 md:py-20 bg-[#F0FDF4] ">
+    <div class="px-4 py-2 md:px-[135px] md:py-[24px] mx-auto flex flex-col gap-10">
+      <div class="title">
+        <h2 class="text-center font-bold text-3xl">Choose Your Trees</h2>
+      </div>
+      <div class="flex flex-col md:flex-row justify-between gap-4">
+        <div class="hidden md:block categories w-1/6">
+          <h5 class="mb-3 text-xl font-bold">Categories</h5>
+          <ul id="categories" class="flex flex-col">
+            
+          </ul>
+        </div>
+        <div id="plants-items" class="items w-4/6 grid grid-cols-1 md:grid-cols-3 gap-4">
+          
+        </div>
+        <div class="cart-details w-1/6"></div>
+      </div>
     </div>
-
-    <!-- Cards -->
-    <div id="plants-container" class="grid md:grid-cols-3 gap-6 mt-6"></div>
   </section>
-
-  <!-- Cart -->
-  <section class="max-w-6xl mx-auto p-6">
-    <h2 class="text-2xl font-bold mb-4">Your Cart</h2>
-    <ul id="cart-list" class="space-y-2"></ul>
-    <p class="font-bold mt-4">Total: $<span id="total-price">0</span></p>
-  </section>
-
 
  <!-- About Section -->
 <section id="about" class="bg-[#ecfdf5] py-16 px-6" style="color: white;">
@@ -134,12 +135,33 @@
     © 2025 Green Earth. All Rights Reserved.
   </footer>
 <!-- Modal -->
-  <div id="modal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center">
-    <div class="bg-white p-6 rounded-xl max-w-lg w-full relative">
-      <button id="close-modal" class="absolute top-2 right-2">❌</button>
-      <div id="modal-content"></div>
+<div id="productDetailsModal" 
+       class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center">
+    <div class="bg-white w-96 p-6 rounded-2xl shadow-lg relative">
+      
+      <button onclick="closeModal()" 
+              class="absolute top-2 right-2 text-gray-500 hover:text-black">
+        ✖
+      </button>
+
+      <h2 class="text-xl font-semibold mb-4" id="plantTitle"></h2>
+      <div class="h-[250px] flex justify-center items-center overflow-hidden">
+        <img id="plantImage" class="w-full"  src="https://i.ibb.co.com/WNbbx3rn/guava-min.jpg" alt="">
+      </div>
+      <p >Category <span id="plantCategory"></span></p>
+      <p>Price <span id="plantPrice"></span></p>
+      <p class="text-gray-600 mb-6" id="plantDetails">
+        
+      </p>
+      <button onclick="closeModal()" 
+              class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700">
+        Close
+      </button>
     </div>
   </div>
 
+
+
+  <script src="./assets/js/main.js"></script>
 </body>
 </html>
